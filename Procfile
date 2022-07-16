@@ -1,1 +1,1 @@
-web: gunicorn --chdir app xxxxxxxx.wsgi:application --log-file - --log-level debug
+web: gunicorn --chdir app djangoResitApp.wsgi:application --log-file - --log-level debug
