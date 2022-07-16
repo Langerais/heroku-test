@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+    {% for property in properties %}
+        <div class="property-name" style="padding-top: 40px">
+
+            <a href="{% url 'property_details' property.id %}" style="text-decoration: none;">
+            {% if property.photo %}
+                <img src="{{ property.photo.url }}" alt="">
+            {% endif %}
+            <h3>{{ property.name|capfirst }}</h3>
+            </a>
+            {% if property.property_type != 'NNN' %}
+                <p>Type: {{ property.get_property_type_display }}</p>
+            {% endif %}
+
+            <p>Address: {{  property.address }}</p>
+            <p class="hidden">{{ property.description }}</p>
+        <p>_____________________________________________________________________________________________________________________</p>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

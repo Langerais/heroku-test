@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+<!--Register-->
+<div class="container py-5">
+	<h1>Register</h1>
+    {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+	<form method="POST">
+		{% csrf_token %}
+		{{ register_form }}
+        <div class='error'>{{form.errors.passwordsDoesntMatch}}</div>
+		<button class="btn btn-primary" type="submit">Register</button>
+	</form>
+	<p class="text-center">If you already have an account, <a href="/login">login</a> instead.</p>
+</div>
+
+{% endblock %}

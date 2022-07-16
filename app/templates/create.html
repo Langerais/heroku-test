@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+<h3>Add your property</h3>
+<form action="." method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_table }}
+    <button type="submit" class="btn btn-secondary my-5">Submit</button>
+    <a type="button" href="{% url 'properties' %}" class="btn btn-secondary my-5">Cancel</a>
+</form>
+{% endblock %}

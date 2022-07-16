@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+    <h3>{{ property.name|capfirst }}</h3>
+
+    {% if property.photo %}
+        <img src="{{ property.get_photo }}" alt="">
+    {% endif %}
+    {% if property.property_type != 'NNN' %}
+        <p>Type: {{ property.get_property_type_display }}</p>
+    {% endif %}
+
+    {% if property.property_type != 'HTL' %}
+        <p>Area: {{ property.area }} m²</p>
+    {% endif %}
+
+    <p>Address: {{ property.address }}</p>
+    <p>{{ property.description }}</p>
+    <p>Managed by InWhite since: {{ property.registration_date|date:"F, Y" }}</p>
+</div>
+{% endblock %}

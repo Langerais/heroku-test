@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h2 class="my-5">Properties:</h2>
+
+        <div class="row row-cols3 g-2">
+            {% for property in properties %}
+
+            <div class="col">
+                <div class="p-3 border">
+                    {% if property.photo %}
+                        <img src="{{ property.photo }}" alt="">
+                    {% endif %}
+                    <a href="{% url 'property_details' property.id %}" class="text-dark text-decoration-non"><h2>{{property.name}}</h2>
+                    </a>
+                    {{property.description|truncatechars:20}}
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+
+{% endblock %}

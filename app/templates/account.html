@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+
+    {% if user.is_authenticated %}
+          Hi {{ user.username }}!
+    {% else %}
+        <p>You are not logged in</p>
+        <a href="{% url 'login' %}">Log In</a>
+    {% endif %}
+
+    {% for property in properties %}
+        <div class="property-name">
+
+            <a href="{% url 'property_details' property.id %}">
+            <h3>{{ property.name|capfirst }}</h3>
+            </a>
+            {% if property.property_type != 'NNN' %}
+                <p>Type: {{ property.get_property_type_display }}</p>
+            {% endif %}
+
+            <p>Address: {{  property.address }}</p>
+            <p class="hidden">{{ property.description }}</p>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
