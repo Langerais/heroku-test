@@ -3,6 +3,7 @@
 from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
+import phonenumber_field.modelfields
 
 
 class Migration(migrations.Migration):
@@ -22,6 +23,11 @@ class Migration(migrations.Migration):
             model_name='owner',
             name='last_name',
             field=models.CharField(default='', max_length=30),
+        ),
+        migrations.AlterField(
+            model_name='owner',
+            name='phone_number',
+            field=phonenumber_field.modelfields.PhoneNumberField(blank=True, max_length=128, region=None, unique=True),
         ),
         migrations.AlterField(
             model_name='owner',
